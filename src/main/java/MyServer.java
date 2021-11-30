@@ -50,14 +50,15 @@ public class MyServer {
         }
     }
 
-    public synchronized void personalMsg (String msg, String nick){
+    public synchronized boolean personalMsg (String msg, String nick){
         for(ClientHandler o:clients){
             if (nick.equals(o.getName())){
                 System.out.println(o.getName());
                 o.sendMsg(msg);
+                return true;
             }
         }
-
+        return false;
     }
 
     public synchronized void unsubscribe(ClientHandler o) {

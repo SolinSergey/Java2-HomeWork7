@@ -76,7 +76,12 @@ public class ClientHandler {
                 //System.out.println(strFromClient);
                 //System.out.println(parts[1]);
                 //System.out.println(parts[2]);
-                myServer.personalMsg(msg,parts[1]);
+                if (myServer.personalMsg("Личное сообщение от " + getName() + ": "+msg,parts[1])){
+                    out.writeUTF("Личное сообщение для "+parts[1]+":"+msg);
+                }
+                else{
+                    out.writeUTF("Участника с ником: "+parts[1]+" нет в чате");
+                }
             }
             else{
                 myServer.broadcastMsg(name + ": " + strFromClient);

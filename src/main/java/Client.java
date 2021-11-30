@@ -9,7 +9,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-public class Client1 extends JFrame {
+public class Client extends JFrame {
     private final String SERVER_ADDR = "localhost";
     private final int SERVER_PORT = 8189;
 
@@ -20,7 +20,7 @@ public class Client1 extends JFrame {
     private DataInputStream in;
     private DataOutputStream out;
 
-    public Client1() {
+    public Client() {
         try {
             openConnection();
         } catch (IOException e) {
@@ -87,7 +87,7 @@ public class Client1 extends JFrame {
         // Параметры окна
         //windowAuth();
         setBounds(600, 300, 500, 500);
-        setTitle("Клиент1");
+        setTitle("Сетевой чат");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Текстовое поле для вывода сообщений
@@ -138,30 +138,9 @@ public class Client1 extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Client1();
+                new Client();
             }
         });
     }
-    public void windowAuth() {
-        JButton blogin = new JButton("Login");
-        JPanel panel1 = new JPanel();
-        JTextField txuser = new JTextField(15);
-        JPasswordField pass = new JPasswordField(15);
-        setSize(300, 200);
-        setLocation(500, 280);
-        panel1.setLayout(null);
 
-        txuser.setBounds(70, 30, 150, 20);
-        pass.setBounds(70, 65, 150, 20);
-        blogin.setBounds(110, 100, 80, 20);
-
-        panel1.add(blogin);
-        panel1.add(txuser);
-        panel1.add(pass);
-
-        getContentPane().add(panel1);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-
-    }
 }
